@@ -27,4 +27,17 @@ module Enumerable
     return array
   end
 
+  def my_all
+    array = Array.new
+    c = 0
+    while c < size - 1
+      return false if !yield(self[c])
+      c += 1
+    end
+
+    return true
+  end
+
+
+
 end
