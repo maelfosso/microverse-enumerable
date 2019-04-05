@@ -63,6 +63,34 @@ module Enumerable
     return true
   end
 
+  def my_count(x=nil)
+    return size if !block_given? && x.nil?
+
+    if !block_given?
+      if (!x.nil?)
+        c = 0
+        n = 0
+        while c < size - 1
+          n += 1 if self[c] == x
+          c += 1
+        end
+
+        return n
+      else
+        return size
+      end
+    end
+
+    c = 0
+    n = 0
+    while c < size - 1
+      n += 1 if yield(self[c])
+      c += 1
+    end
+
+    return n
+  end
+
 
 
 end
