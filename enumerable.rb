@@ -28,7 +28,6 @@ module Enumerable
   end
 
   def my_all
-    array = Array.new
     c = 0
     while c < size - 1
       return false if !yield(self[c])
@@ -36,6 +35,18 @@ module Enumerable
     end
 
     return true
+  end
+
+  def my_any
+    return true if !block_given?
+
+    c = 0
+    while c < size - 1
+      return true if yield(self[c])
+      c += 1
+    end
+
+    return false
   end
 
 
