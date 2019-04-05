@@ -102,4 +102,27 @@ module Enumerable
     return array
   end
 
+  def my_inject(x = nil)
+    return nil if !block_given?
+
+    if !x.nil?
+      result = x
+      c = 0
+    else
+      result = self[0]
+      c = 1
+    end
+
+    while c < size
+      result = yield(result, self[c])
+      c += 1
+    end
+
+    return result
+  end
+
+end
+
+def multiply_els(array)
+  return array.my_inject(1) {|product, value| product * value }
 end
