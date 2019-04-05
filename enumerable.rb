@@ -28,6 +28,8 @@ module Enumerable
   end
 
   def my_all
+    return false if !block_given?
+
     c = 0
     while c < size - 1
       return false if !yield(self[c])
