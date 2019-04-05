@@ -51,6 +51,18 @@ module Enumerable
     return false
   end
 
+  def my_none
+    return true if !block_given?
+
+    c = 0
+    while c < size - 1
+      return false if yield(self[c])
+      c += 1
+    end
+
+    return true
+  end
+
 
 
 end
