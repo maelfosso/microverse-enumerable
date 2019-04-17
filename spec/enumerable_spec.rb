@@ -4,6 +4,27 @@ require_relative "../enumerable.rb"
 describe Enumerable do
   let(:arr) { [2, 4, 5] }
 
+  context "#my_all" do
+    it "returns true if no block given" do
+      r = arr.my_all
+
+      expect(r).to eq(true)
+    end
+
+    it "returns false if an empty block given" do
+      r = arr.my_all {}
+
+      expect(r).to eq(false)
+    end
+
+    it "returns false if at least one element doesn't satisfy the block condition" do
+      r = arr.my_all{|x| x%2 == 0}
+
+      expect(r).to eq(false)
+    end
+    
+  end
+
   context "#my_any" do
     it "returns true if no block given" do
       r = arr.my_any
