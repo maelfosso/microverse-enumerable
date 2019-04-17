@@ -4,6 +4,26 @@ require_relative "../enumerable.rb"
 describe Enumerable do
   let(:arr) { [2, 4, 5] }
 
+  context "#my_none" do
+    it "returns true if no block give" do
+      r = arr.my_none
+
+      expect(r).to eq(true)
+    end
+
+    it "returns true if the array is empty" do
+      r = [].my_none
+
+      expect(r).to eq(true)
+    end
+
+    it "returns false if at least one element satisfie the block condition" do
+      r = arr.my_none{|x| x%2 == 0}
+
+      expect(r).to eq(false)
+    end
+  end
+
   context "#my_count" do
     let(:arr) { [2, 4, 5, 2, 0, 5, 5, 3] }
 
