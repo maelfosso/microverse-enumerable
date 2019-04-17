@@ -4,6 +4,28 @@ require_relative "../enumerable.rb"
 describe Enumerable do
   let(:arr) { [2, 4, 5] }
 
+  context "#my_count" do
+    let(:arr) { [2, 4, 5, 2, 0, 5, 5, 3] }
+
+    it "returns the size when no block given" do
+      c = arr.my_count
+
+      expect(c).to eq(8)
+    end
+
+    it "counts the number of element equal to the parameter given when no block given" do
+      c = arr.my_count(2)
+
+      expect(c).to eq(2)
+    end
+
+    it "returns the number of element corresponding to the block evalution" do
+      c = arr.my_count {|x| x%2 == 0}
+
+      expect(c).to eq(4)
+    end
+  end
+
   context "#my_map" do
     it "runs the block for every element" do
       new_arr = arr.my_map{|i| i * 2}
