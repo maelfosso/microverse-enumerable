@@ -4,6 +4,15 @@ require_relative "../enumerable.rb"
 describe Enumerable do
   let(:arr) { [2, 4, 5] }
 
+  context "#my_each" do
+    it "returns good result" do
+      r = []
+      arr.my_each {|item| r << item.to_i * item.to_i }
+
+      expect(r).to eq([4, 16, 25])
+    end
+  end
+
   context "#my_each_with_index" do
     it "returns good result when block given" do
       r = []
