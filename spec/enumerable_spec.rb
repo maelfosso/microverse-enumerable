@@ -4,6 +4,20 @@ require_relative "../enumerable.rb"
 describe Enumerable do
   let(:arr) { [2, 4, 5] }
 
+  context "#my_map" do
+    it "runs the block for every element" do
+      new_arr = arr.my_map{|i| i * 2}
+
+      expect(new_arr).to eq([4, 8, 10])
+    end
+
+    it "returns nil if the block is empty" do
+      new_arr = arr.my_map {}
+
+      expect(new_arr).to eq([nil, nil, nil])
+    end
+  end
+
   context "#my_inject" do
     it "correctly sum up the elements" do
       sum = arr.my_inject(0) {|s, e| s + e}
