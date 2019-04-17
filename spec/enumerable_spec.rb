@@ -4,6 +4,15 @@ require_relative "../enumerable.rb"
 describe Enumerable do
   let(:arr) { [2, 4, 5] }
 
+  context "#my_each_with_index" do
+    it "returns good result when block given" do
+      r = []
+      arr.my_each_with_index {|item, ix| r[ix] = item.to_i * ix}
+
+      expect(r).to eq([0, 4, 10])
+    end
+  end
+
   context "#my_select" do
     it "returns an empty array if block given is empty" do
       r = arr.my_select {}
@@ -17,7 +26,7 @@ describe Enumerable do
       expect(r).to eq([2, 4])
     end
   end
-  
+
   context "#my_all" do
     it "returns true if no block given" do
       r = arr.my_all
