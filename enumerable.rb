@@ -28,7 +28,7 @@ module Enumerable
   end
 
   def my_all
-    return false if !block_given?
+    return true if !block_given?
 
     c = 0
     while c < size
